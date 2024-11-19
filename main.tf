@@ -20,6 +20,8 @@ output PET {
   value = random_pet.pet.id
 }
 
+data "spacelift_current_stack" "this" {}
+
 resource "spacelift_stack" "stack" {
   name       = "sp5ft-stack-${random_pet.pet.id}"
   branch     = "main"
@@ -32,8 +34,6 @@ resource "spacelift_stack" "stack" {
   worker_pool_id = "${var.worker_pool_id}"
   autodeploy     = true
 }
-
-data "spacelift_current_stack" "this" {}
 
 resource "spacelift_stack_dependency" "dep" {
   stack_id            = spacelift_stack.stack.id
