@@ -23,6 +23,7 @@ resource "spacelift_stack" "stack" {
     url = "https://github.com/truszkowski/sp5ft-example"
     namespace = "truszkowski"
   }
+  repository = "sp5ft-example"
   project_root = "stack"
 }
 
