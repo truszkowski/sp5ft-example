@@ -13,7 +13,7 @@ variable worker_pool_id {
 }
 
 resource random_pet pet {
-  length = 1
+  length = 2
 }
 
 output PET {
