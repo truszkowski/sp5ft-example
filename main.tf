@@ -8,6 +8,10 @@ terraform {
   }
 }
 
+variable worker_pool_id {
+  type = string
+}
+
 resource random_pet pet {
   length = 1
 }
@@ -25,6 +29,7 @@ resource "spacelift_stack" "stack" {
   }
   repository = "sp5ft-example"
   project_root = "stack"
+  worker_pool_id = "${var.worker_pool_id}"
 }
 
 data "spacelift_current_stack" "this" {}
