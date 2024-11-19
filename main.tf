@@ -46,6 +46,8 @@ resource "spacelift_stack_dependency_reference" "ref" {
   input_name          = "TF_VAR_PET"
 }
 
+// task & drift will destroy & repair state 
+
 resource "spacelift_drift_detection" "drift" {
   reconcile = true
   stack_id  = spacelift_stack.stack.id
