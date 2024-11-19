@@ -27,10 +27,10 @@ resource "spacelift_stack" "stack" {
     url = "https://github.com/truszkowski/sp5ft-example"
     namespace = "truszkowski"
   }
-  repository = "sp5ft-example"
-  project_root = "stack"
+  repository     = "sp5ft-example"
+  project_root   = "stack"
   worker_pool_id = "${var.worker_pool_id}"
-  autodeploy = true
+  autodeploy     = true
 }
 
 data "spacelift_current_stack" "this" {}
