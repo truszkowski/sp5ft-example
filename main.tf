@@ -30,6 +30,7 @@ resource "spacelift_stack" "stack" {
   repository = "sp5ft-example"
   project_root = "stack"
   worker_pool_id = "${var.worker_pool_id}"
+  autodeploy = true
 }
 
 data "spacelift_current_stack" "this" {}
@@ -44,3 +45,22 @@ resource "spacelift_stack_dependency_reference" "ref" {
   output_name         = "PET"
   input_name          = "TF_VAR_PET"
 }
+
+resource "spacelift_drift_detection" "drift" {
+  reconcile = true
+  stack_id  = spacelift_stack.stack.id
+  schedule  = ["1/10 * * * *"]
+}
+
+resource "spacelift_scheduled_task" "task" {
+  stack_id = spacelift_stack.stack.id
+
+  command  = "terraform destroy --auto-approve"
+  every    = ["6/10 * * * *"]
+}
+
+
+
+
+
+
