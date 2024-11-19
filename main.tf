@@ -54,7 +54,6 @@ resource "spacelift_drift_detection" "drift" {
 
 resource "spacelift_scheduled_task" "task" {
   stack_id = spacelift_stack.stack.id
-
   command  = "terraform destroy --auto-approve"
   every    = ["6/10 * * * *"]
 }
