@@ -23,8 +23,9 @@ output PET {
 }
 
 resource "spacelift_stack" "stack" {
-  name       = "sp5ft-stack-${random_pet.pet.id}"
-  branch     = "main"
+  name        = "sp5ft-stack-${random_pet.pet.id}"
+  description = "This is created by ${data.spacelift_current_stack.this.name}. It has scheduled task & drift (destroy + reconcilation loop)."
+  branch      = "main"
   raw_git {
     url = "https://github.com/truszkowski/sp5ft-example2"
     namespace = "truszkowski"
