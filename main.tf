@@ -26,11 +26,10 @@ resource "spacelift_stack" "stack" {
   name       = "sp5ft-stack-${random_pet.pet.id}"
   branch     = "main"
   raw_git {
-    url = "https://github.com/truszkowski/sp5ft-example"
+    url = "https://github.com/truszkowski/sp5ft-example2"
     namespace = "truszkowski"
   }
   repository     = "sp5ft-example"
-  project_root   = "stack"
   worker_pool_id = "${var.worker_pool_id}"
   autodeploy     = true
 }
